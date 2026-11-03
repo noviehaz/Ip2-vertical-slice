@@ -12,6 +12,7 @@ public sealed class AppDbContext : DbContext, IAppDbContext
     public DbSet<Course> Courses => Set<Course>();
     public DbSet<Admission> Admissions => Set<Admission>();
     public DbSet<AdmissionCourse> AdmissionCourses => Set<AdmissionCourse>();
+    public DbSet<Product> Products => Set<Product>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -48,6 +49,29 @@ public sealed class AppDbContext : DbContext, IAppDbContext
             entity.HasOne(ac => ac.Course)
                   .WithMany()
                   .HasForeignKey(ac => ac.CourseId);
+        });
+
+        modelBuilder.Entity<Product>(entity =>
+        {
+            entity.HasKey(p => p.Id);
+
+            entity.Property(p => p.Name)
+                  .IsRequired()
+                  .HasMaxLength(150);
+
+            entity.Property(p => p.Sku)
+                  .IsRequired()
+                  .HasMaxLength(50);
+
+            entity.Property(p => p.Description)
+                  .HasMaxLength(500);
+
+            entity.Property(p => p.Price)
+                  .IsRequired()
+                  .HasPrecision(18, 2);
+
+            entity.Property(p => p.StockQuantity)
+                  .IsRequired();
         });
     }
 }

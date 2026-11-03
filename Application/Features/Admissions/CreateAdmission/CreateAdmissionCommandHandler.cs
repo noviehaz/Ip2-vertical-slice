@@ -12,7 +12,7 @@ public sealed class CreateAdmissionCommandHandler(IAppDbContext dbContext)
     public async Task<Result<CreateAdmissionResponse>> HandleAsync(
         CreateAdmissionCommand command,
         CancellationToken cancellationToken = default)
-    {
+        {
         var student = await dbContext.Students
             .FirstOrDefaultAsync(s => s.Id == command.StudentId, cancellationToken);
 

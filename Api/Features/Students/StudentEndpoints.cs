@@ -6,33 +6,45 @@ using Application.Features.Students.CreateStudent;
 using Application.Features.Students.GetAllStudents;
 using Application.Features.Students.GetStudentById;
 using Domain.Common;
+using Microsoft.AspNetCore.Mvc;
 
 public static class StudentEndpoints
 {
+    private const string GetAllRouteName = "GetAllStudents";
+    private const string GetByIdRouteName = "GetStudentById";
+
     public static void MapStudentEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/students")
             .WithTags("Students");
 
+        // GET: /api/students
         group.MapGet("/", GetAll)
-            .WithName("GetAllStudents")
+            .WithName(GetAllRouteName)
             .WithSummary("Get all students");
 
+        // POST: /api/students
         group.MapPost("/", Create)
             .WithName("CreateStudent")
             .WithSummary("Create a new student");
 
+        // GET: /api/students/{id}
         group.MapGet("/{id:guid}", GetById)
-            .WithName("GetStudentById")
+            .WithName(GetByIdRouteName)
             .WithSummary("Get student by ID");
     }
 
     private static async Task<IResult> GetAll(
+        [FromServices]
         IQueryHandler<GetAllStudentsQuery, Result<GetAllStudentsResponse>> handler,
         CancellationToken cancellationToken)
     {
         var query = new GetAllStudentsQuery();
-        var result = await handler.HandleAsync(query, cancellationToken);
+
+        var result = await handler.HandleAsync(
+            query,
+            cancellationToken);
+
         return result.IsSuccess
             ? TypedResults.Ok(result.Value)
             : result.ToProblemDetails();
@@ -40,22 +52,34 @@ public static class StudentEndpoints
 
     private static async Task<IResult> Create(
         CreateStudentCommand command,
+        [FromServices]
         ICommandHandler<CreateStudentCommand, Result<CreateStudentResponse>> handler,
         CancellationToken cancellationToken)
     {
-        var result = await handler.HandleAsync(command, cancellationToken);
+        var result = await handler.HandleAsync(
+            command,
+            cancellationToken);
+
         return result.IsSuccess
-            ? TypedResults.CreatedAtRoute(result.Value, "GetStudentById", new { id = result.Value!.Id })
+            ? TypedResults.CreatedAtRoute(
+                result.Value,
+                GetByIdRouteName,
+                new { id = result.Value!.Id })
             : result.ToProblemDetails();
     }
 
     private static async Task<IResult> GetById(
         Guid id,
+        [FromServices]
         IQueryHandler<GetStudentByIdQuery, Result<GetStudentByIdResponse>> handler,
         CancellationToken cancellationToken)
     {
         var query = new GetStudentByIdQuery(id);
-        var result = await handler.HandleAsync(query, cancellationToken);
+
+        var result = await handler.HandleAsync(
+            query,
+            cancellationToken);
+
         return result.IsSuccess
             ? TypedResults.Ok(result.Value)
             : result.ToProblemDetails();
