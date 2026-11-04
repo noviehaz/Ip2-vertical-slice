@@ -1,0 +1,304 @@
+[
+  {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_2",
+    "RelativePath": "",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api.Features.Admissions.AdmissionEndpoints",
+    "Method": "Create",
+    "RelativePath": "api/admissions/",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "Application.Features.Admissions.CreateAdmission.CreateAdmissionCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Admissions"
+    ],
+    "EndpointName": "CreateAdmission",
+    "Summary": "Create a new admission with courses"
+  },
+  {
+    "ContainingType": "Api.Features.Admissions.AdmissionEndpoints",
+    "Method": "GetAll",
+    "RelativePath": "api/admissions/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Admissions"
+    ],
+    "EndpointName": "GetAdmision",
+    "Summary": "Get all admissions"
+  },
+  {
+    "ContainingType": "Api.Features.Admissions.AdmissionEndpoints",
+    "Method": "GetById",
+    "RelativePath": "api/admissions/{id:guid}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Admissions"
+    ],
+    "EndpointName": "GetAdmissionById",
+    "Summary": "Get admission by ID with courses"
+  },
+  {
+    "ContainingType": "Api.Features.Courses.CourseEndpoints",
+    "Method": "GetAll",
+    "RelativePath": "api/courses/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Courses"
+    ],
+    "EndpointName": "GetAllCourses",
+    "Summary": "Get all courses"
+  },
+  {
+    "ContainingType": "Api.Features.Courses.CourseEndpoints",
+    "Method": "Create",
+    "RelativePath": "api/courses/",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "Application.Features.Courses.CreateCourse.CreateCourseCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Courses"
+    ],
+    "EndpointName": "CreateCourse",
+    "Summary": "Create a new course"
+  },
+  {
+    "ContainingType": "Api.Features.Courses.CourseEndpoints",
+    "Method": "Delete",
+    "RelativePath": "api/courses/{id:guid}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Courses"
+    ],
+    "EndpointName": "DeleteCourse",
+    "Summary": "Delete a course"
+  },
+  {
+    "ContainingType": "Api.Features.Courses.CourseEndpoints",
+    "Method": "Update",
+    "RelativePath": "api/courses/{id:guid}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "Api.Features.Courses.UpdateCourseRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Courses"
+    ],
+    "EndpointName": "UpdateCourse",
+    "Summary": "Update an existing course"
+  },
+  {
+    "ContainingType": "Api.Features.Courses.CourseEndpoints",
+    "Method": "GetById",
+    "RelativePath": "api/courses/{id:guid}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Courses"
+    ],
+    "EndpointName": "GetCourseById",
+    "Summary": "Get course by ID"
+  },
+  {
+    "ContainingType": "Api.Features.Students.StudentEndpoints",
+    "Method": "GetAll",
+    "RelativePath": "api/students/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Students"
+    ],
+    "EndpointName": "GetAllStudents",
+    "Summary": "Get all students"
+  },
+  {
+    "ContainingType": "Api.Features.Students.StudentEndpoints",
+    "Method": "Create",
+    "RelativePath": "api/students/",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "Application.Features.Students.CreateStudent.CreateStudentCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Students"
+    ],
+    "EndpointName": "CreateStudent",
+    "Summary": "Create a new student"
+  },
+  {
+    "ContainingType": "Api.Features.Students.StudentEndpoints",
+    "Method": "GetById",
+    "RelativePath": "api/students/{id:guid}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Students"
+    ],
+    "EndpointName": "GetStudentById",
+    "Summary": "Get student by ID"
+  }
+]
